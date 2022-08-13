@@ -1,0 +1,13 @@
+[flake8]
+ignore =
+    # E203 is not compliant with https://github.com/ambv/black. More info is available on the black readme
+    E203,
+    # W503 is not compliant with https://github.com/ambv/black. More info is available on the black readme
+    W503
+exclude =
+    .git,
+    __pycache__,
+    env,
+    venv
+max-line-length = 88
+max-complexity = 8
