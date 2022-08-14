@@ -17,6 +17,7 @@ class DynamoDBClient(Generic[T]):
     dynamo_resource: DynamoDBServiceResource
 
     def __init__(self, dynamo_resource: DynamoDBServiceResource, table_name: Table):
+        self.dynamo_resource = dynamo_resource
         self.table = dynamo_resource.Table(table_name)
 
     def store(self, entity: T) -> None:
@@ -29,5 +30,8 @@ class DynamoDBClient(Generic[T]):
         try:
             item = self.table.get_item(Key={id_name: id})
             return cast(T, item["Item"])
-        except self.dynamo_resource.meta.client.exceptions.ResourceNotFoundException:
+        except (
+            KeyError,
+            self.dynamo_resource.meta.client.exceptions.ResourceNotFoundException,
+        ):
             return None
