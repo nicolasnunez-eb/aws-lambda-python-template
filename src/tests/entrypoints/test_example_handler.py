@@ -37,6 +37,27 @@ class TestLambdaHandler:
                 context={},
             )
 
+    def test_it_should_return_not_found_when_entity_does_not_exist(
+        self,
+        mock_dynamodb_client: Mock,
+    ):
+        mock_dynamodb_client.find_by_id.return_value = None
+
+        response = handle(
+            event={},
+            context={},
+        )
+
+        assert response["statusCode"] == HTTPStatus.NOT_FOUND.value
+        assert response["body"] == json.dumps(
+            {
+                "error": {
+                    "code": "NOT_FOUND",
+                    "description": "Example entity does not exist",
+                }
+            }
+        )
+
     def test_it_should_return_ok_with_example_item(
         self,
         mock_dynamodb_client: Mock,
