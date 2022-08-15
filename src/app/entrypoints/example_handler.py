@@ -10,5 +10,5 @@ class ExampleModel(TypedDict):
 
 def handle(event: dict, context: dict) -> dict:
     client = DynamoDBClient[ExampleModel](dynamodb_resource, "Example")
-    client.store({"id": "1", "name": "john"})
+    client.find_by_id("id", "1")
     return {}
