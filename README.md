@@ -22,6 +22,11 @@ To setup your python environment properly you have to:
 3. Install dependencies running `pipenv install --dev --skip-lock`
 4. Install pre-commit and enable it with `pip install pre-commit && pre-commit install`
 
+# Tests
+
+1. To run tests just execute `pytest` in the terminal
+2. If you want to see the coverage of your project run `coverage run && coverage report`
+
 ## Mypy helps 🍾
 
 Also this template will provide some utilities that will help MyPy linter and will make your ~~life~~ development easier.
