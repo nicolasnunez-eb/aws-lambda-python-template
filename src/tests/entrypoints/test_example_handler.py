@@ -3,16 +3,9 @@ from http import HTTPStatus
 from unittest.mock import Mock, patch
 
 import pytest
-from app.entrypoints.example_handler import ExampleModel, handle
 from botocore.exceptions import ClientError
 
-EXAMPLE_QUESTION_RESPONSE = {
-    "question_id": "fumas?",
-    "answer": {
-        "id": "SI",
-        "value": "Si",
-    },
-}
+from app.entrypoints.example_handler import ExampleModel, handle
 
 
 class TestLambdaHandler:

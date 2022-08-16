@@ -2,8 +2,11 @@ from http import HTTPStatus
 from typing import TypedDict
 
 from app.shared.aws_dynamodb import DynamoDBClient, dynamodb_resource
-
-from ..shared.aws_lambda_io import ApiGatewayResponse, LambdaEvent, api_gateway_response
+from app.shared.aws_lambda_io import (
+    ApiGatewayResponse,
+    LambdaEvent,
+    api_gateway_response,
+)
 
 
 class ExampleModel(TypedDict):
