@@ -30,8 +30,5 @@ class DynamoDBClient(Generic[T]):
         try:
             item = self.table.get_item(Key={id_name: id})
             return cast(T, item["Item"])
-        except (
-            KeyError,
-            self.dynamo_resource.meta.client.exceptions.ResourceNotFoundException,
-        ):
+        except KeyError:
             return None
